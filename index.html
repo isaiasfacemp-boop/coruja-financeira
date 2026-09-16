@@ -25,6 +25,24 @@
 html{-webkit-text-size-adjust:100%}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5;padding-bottom:48px}
 .wrap{max-width:520px;margin:0 auto;padding:0 16px}
+@media (min-width:860px){
+  .wrap{
+    max-width:1120px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    align-items:start;
+    padding:0 28px;
+  }
+  .bloco-secao{margin:0}
+  .bloco-secao.-largo2col{grid-column:1 / -1}
+  .bloco-secao > .card{margin-top:0}
+  .bloco-secao > .card.-alto{margin-top:0}
+}
+@media (min-width:1300px){
+  .wrap{max-width:1360px;grid-template-columns:1fr 1fr 1fr}
+  .bloco-secao.-largo2col{grid-column:1 / -1}
+}
 
 .topo{background:var(--ink);color:#fff;padding:22px 16px 46px;border-radius:0 0 26px 26px}
 .topo .marca{display:flex;align-items:center;gap:10px;max-width:520px;margin:0 auto}
@@ -197,14 +215,17 @@ h2 .valor.-verde{color:var(--green)}
 
 <div class="wrap">
 
-  <section class="card -alto">
+  <div class="bloco-secao">
+<section class="card -alto">
     <div class="linha">
       <div class="campo"><label for="nome">Nome</label><input id="nome" type="text" placeholder="Seu nome"></div>
       <div class="campo"><label for="mes">M&ecirc;s</label><select id="mes"></select></div>
     </div>
   </section>
+  </div>
 
-  <h2>&#128176; De onde vem o dinheiro <span class="valor -verde" id="totalRendas">R$ 0,00</span></h2>
+  <div class="bloco-secao">
+<h2>&#128176; De onde vem o dinheiro <span class="valor -verde" id="totalRendas">R$ 0,00</span></h2>
   <section class="card">
     <div id="listaRendas"><p class="vazio">Sal&aacute;rio, freela, aluguel recebido. Cadastre cada fonte separada pra saber de onde vem.</p></div>
     <button class="add" id="addRenda">+ Adicionar entrada</button>
@@ -212,8 +233,10 @@ h2 .valor.-verde{color:var(--green)}
     <div id="listaEmpresas"><p class="vazio">Cadastre as empresas de onde vem o seu dinheiro.</p></div>
     <button class="add" id="addEmpresa">+ Cadastrar empresa</button>
   </section>
+  </div>
 
-  <section class="card">
+  <div class="bloco-secao -largo2col">
+<section class="card">
     <div class="painel">
       <div class="bloco"><span>Saldo do m&ecirc;s</span><strong id="saldo">R$ 0,00</strong></div>
       <div class="bloco -status"><span>Sua coruja est&aacute;</span><strong id="statusTexto">Dormindo</strong></div>
@@ -242,49 +265,64 @@ h2 .valor.-verde{color:var(--green)}
       </div>
     </div>
   </section>
+  </div>
 
-  <h2>&#128179; Contas e cart&otilde;es</h2>
+  <div class="bloco-secao">
+<h2>&#128179; Contas e cart&otilde;es</h2>
   <section class="card">
     <div id="listaContas"><p class="vazio">Cadastre sua conta do banco, a carteira e os cart&otilde;es. Todo lan&ccedil;amento sai de uma delas.</p></div>
     <button class="add" id="addConta">+ Adicionar conta ou cart&atilde;o</button>
     <button class="add" id="addTransferencia">+ Transferir entre contas</button>
     <div id="listaTransferencias"></div>
   </section>
+  </div>
 
-  <h2>&#128202; Relat&oacute;rio do m&ecirc;s</h2>
+  <div class="bloco-secao">
+<h2>&#128202; Relat&oacute;rio do m&ecirc;s</h2>
   <section class="card" id="relatorio">
     <p class="vazio">Adicione suas entradas e gastos pra ver o relat&oacute;rio de onde seu dinheiro est&aacute; indo.</p>
   </section>
+  </div>
 
-  <h2>&#127968; Gastos fixos <span class="valor" id="totalFixos">R$ 0,00</span></h2>
+  <div class="bloco-secao">
+<h2>&#127968; Gastos fixos <span class="valor" id="totalFixos">R$ 0,00</span></h2>
   <section class="card">
     <div id="listaFixos"><p class="vazio">Aluguel, luz, internet, o que cai todo m&ecirc;s.</p></div>
     <button class="add" data-add="fixos">+ Adicionar gasto fixo</button>
   </section>
+  </div>
 
-  <h2>&#128717; Gastos vari&aacute;veis <span class="valor" id="totalVariaveis">R$ 0,00</span></h2>
+  <div class="bloco-secao">
+<h2>&#128717; Gastos vari&aacute;veis <span class="valor" id="totalVariaveis">R$ 0,00</span></h2>
   <section class="card">
     <div id="listaVariaveis"><p class="vazio">Mercado, lanche, combust&iacute;vel, aquele extra.</p></div>
     <button class="add" data-add="variaveis">+ Adicionar gasto vari&aacute;vel</button>
   </section>
+  </div>
 
-  <h2>&#128200; Investimentos <span class="valor" id="totalInvestimentos">R$ 0,00</span></h2>
+  <div class="bloco-secao">
+<h2>&#128200; Investimentos <span class="valor" id="totalInvestimentos">R$ 0,00</span></h2>
   <section class="card">
     <div id="listaInvestimentos"><p class="vazio">O que voc&ecirc; guardou em vez de gastar.</p></div>
     <button class="add" data-add="investimentos">+ Adicionar investimento</button>
   </section>
+  </div>
 
-  <h2>&#127919; Metas</h2>
+  <div class="bloco-secao">
+<h2>&#127919; Metas</h2>
   <section class="card">
     <div id="listaMetas"><p class="vazio">Defina um objetivo e v&aacute; enchendo aos poucos.</p></div>
     <button class="add" id="addMeta">+ Adicionar meta</button>
   </section>
+  </div>
 
-  <h2>&#128196; Relat&oacute;rio mensal</h2>
+  <div class="bloco-secao">
+<h2>&#128196; Relat&oacute;rio mensal</h2>
   <section class="card">
     <div class="campo"><label for="taxaAnual">Taxa de juros anual estimada pros investimentos (%)</label><input id="taxaAnual" type="number" inputmode="decimal" step="0.1" min="0" placeholder="10"></div>
     <button class="add" id="gerarRelatorio">&#128190; Baixar relat&oacute;rio do m&ecirc;s em PDF</button>
   </section>
+  </div>
 </div>
 
 <div id="folhaRelatorio" class="folha-relatorio"></div>
